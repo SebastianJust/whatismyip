@@ -1,244 +1,369 @@
 <div align="center">
 
+# 🌐 myip-cli
 
+### Public and local IP addresses from your terminal — fast, clean, scriptable.
 
-\# 🌐 myip-cli
+<br />
 
+[![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet\&logoColor=white)](https://dotnet.microsoft.com/download)
+[![NuGet](https://img.shields.io/nuget/v/myip-cli?logo=nuget\&color=blue)](https://www.nuget.org/packages/myip-cli)
+[![Downloads](https://img.shields.io/nuget/dt/myip-cli?logo=nuget\&color=blue)](https://www.nuget.org/packages/myip-cli)
+[![Build](https://img.shields.io/github/actions/workflow/status/<your-username>/myip-cli/ci.yml?branch=main\&logo=github)](https://github.com/<your-username>/myip-cli/actions)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-informational)](#)
 
+<br />
 
-\*\*Your public and internal IP addresses, one command away.\*\*
+<img src="https://raw.githubusercontent.com/<your-username>/myip-cli/main/docs/demo.gif" width="720" alt="myip-cli demo">
 
+<br />
+<br />
 
-
-\[!\[.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet\&logoColor=white)](https://dotnet.microsoft.com/download)
-
-\[!\[Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-informational)](#)
-
-\[!\[License](https://img.shields.io/badge/license-MIT-blue.svg)](#license)
-
-
-
-```
-
-$ whatismyip
-
-
-
-Public IP
-
-&#x20; 203.0.113.42
-
-
-
-Internal IP(s)
-
-&#x20; Ethernet             IPv4   192.168.1.23
-
-&#x20; Wi-Fi                IPv4   192.168.1.24
-
-&#x20; Ethernet             IPv6   fe80::1a2b:3c4d:5e6f:7g8h
-
-```
-
-
+**One command. No browser. No ads. No platform-specific commands.**
 
 </div>
 
+---
 
+## Why?
 
-\---
+Checking your IP should be simple.
 
+On Windows you use `ipconfig`.
+On Linux you use `ip addr`.
+On macOS you might use `ifconfig`.
+For your public IP, you usually open a browser.
 
-
-\## Why
-
-
-
-Every OS makes you dig for this info differently — `ipconfig`, `ifconfig`, `ip addr`,
-
-a browser tab to "what's my ip"... `whatismyip` gives you both your \*\*public\*\* and
-
-\*\*internal\*\* addresses in one clean, colorized command, on any platform with .NET.
-
-
-
-\## Features
-
-
-
-\- 🔎 Public IP lookup with automatic fallback across three providers
-
-\- 🖧 All internal (LAN) IPv4/IPv6 addresses, per network interface
-
-\- 🎨 Colorized terminal output (or `--no-color` / `NO\_COLOR` for plain text)
-
-\- 🤖 `--json` flag for scripting and piping into other tools
-
-\- 🪶 Single self-contained command — no config, no API keys
-
-
-
-\## Install
-
-
-
-Requires the \[.NET 8 SDK or runtime](https://dotnet.microsoft.com/download).
-
-
+`myip-cli` gives you both your **public IP** and **local/internal IPs** in one predictable command.
 
 ```bash
-
-dotnet tool install --global myip-cli
-
+whatismyip
 ```
 
+> [!TIP]
+> Use `--json` when you want to pipe the result into scripts, CI jobs, logs, or automation tools.
 
+---
 
-That's it — `whatismyip` is now available in any terminal.
+## Quick start
 
+```bash
+dotnet tool install --global myip-cli
+```
 
+Then run:
+
+```bash
+whatismyip
+```
+
+Example output:
+
+```txt
+Public IP
+  203.0.113.42
+
+Internal IP(s)
+  Ethernet             IPv4   192.168.1.23
+  Wi-Fi                IPv4   192.168.1.24
+  Ethernet             IPv6   fe80::1a2b:3c4d:5e6f:7a8b
+```
+
+---
+
+## CLI usage
+
+```bash
+whatismyip [options]
+```
+
+| Option       | Alias | Description                  |
+| ------------ | ----: | ---------------------------- |
+| `--json`     |  `-j` | Output machine-readable JSON |
+| `--no-color` |       | Disable ANSI colors          |
+| `--help`     |  `-h` | Show help                    |
+| `--version`  |       | Show version                 |
+
+> [!NOTE]
+> Colors are enabled by default when running in an interactive terminal.
+
+---
+
+## Examples
+
+### Human-readable output
+
+```bash
+whatismyip
+```
+
+```txt
+Public IP
+  203.0.113.42
+
+Internal IP(s)
+  Ethernet             IPv4   192.168.1.23
+  Wi-Fi                IPv4   192.168.1.24
+```
+
+---
+
+### JSON output
+
+```bash
+whatismyip --json
+```
+
+```json
+{
+  "publicIp": "203.0.113.42",
+  "internal": [
+    {
+      "interfaceName": "Ethernet",
+      "address": "192.168.1.23",
+      "family": "IPv4"
+    },
+    {
+      "interfaceName": "Wi-Fi",
+      "address": "192.168.1.24",
+      "family": "IPv4"
+    }
+  ]
+}
+```
+
+---
+
+### Use in PowerShell
+
+```powershell
+$result = whatismyip --json | ConvertFrom-Json
+
+$result.publicIp
+$result.internal
+```
+
+---
+
+### Use in Bash
+
+```bash
+whatismyip --json | jq -r '.publicIp'
+```
+
+---
+
+### Disable colors
+
+```bash
+whatismyip --no-color
+```
+
+Or use the standard environment variable:
+
+```bash
+NO_COLOR=1 whatismyip
+```
+
+> [!IMPORTANT]
+> `--no-color` is useful when writing output to files, logs, CI systems, or tools that do not support ANSI escape codes.
+
+---
+
+## Features
+
+| Feature            | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| Public IP lookup   | Fetches your public IP from external providers    |
+| Provider fallback  | Automatically tries another provider if one fails |
+| Local IP detection | Lists active local network interfaces             |
+| IPv4 and IPv6      | Shows both address families                       |
+| JSON output        | Works well with scripts and automation            |
+| No config          | No API keys, accounts, or setup                   |
+| Cross-platform     | Windows, macOS, and Linux                         |
+| Pure .NET          | No native dependencies                            |
+
+---
+
+## Installation
+
+Install globally with the .NET CLI:
+
+```bash
+dotnet tool install --global myip-cli
+```
 
 Upgrade:
 
-
-
 ```bash
-
 dotnet tool update --global myip-cli
-
 ```
-
-
 
 Uninstall:
 
-
-
 ```bash
-
 dotnet tool uninstall --global myip-cli
-
 ```
 
+> [!NOTE]
+> Requires the .NET 8 SDK or runtime.
 
+---
 
-\## Usage
+## How it works
 
+`myip-cli` collects two types of IP addresses:
 
+| Type      | Source                                            |
+| --------- | ------------------------------------------------- |
+| Public IP | External public IP providers                      |
+| Local IPs | `.NET NetworkInterface.GetAllNetworkInterfaces()` |
+
+Public IP providers are tried in order:
+
+```txt
+api.ipify.org
+ifconfig.me
+icanhazip.com
+```
+
+Local interfaces are filtered to remove noisy or irrelevant entries such as:
+
+```txt
+loopback
+inactive interfaces
+tunnel interfaces
+```
+
+This keeps the output focused on the addresses you are most likely to care about.
+
+---
+
+## JSON contract
+
+When using `--json`, the output follows this shape:
+
+```ts
+type MyIpResult = {
+  publicIp: string | null;
+  internal: InternalIpAddress[];
+};
+
+type InternalIpAddress = {
+  interfaceName: string;
+  address: string;
+  family: "IPv4" | "IPv6";
+};
+```
+
+> [!TIP]
+> The JSON output is intended to be stable so it can safely be used in scripts.
+
+---
+
+## Build from source
+
+Clone the repository:
 
 ```bash
-
-whatismyip                # colorized human-readable output
-
-whatismyip --json         # machine-readable JSON
-
-whatismyip -j             # short flag for --json
-
-whatismyip --no-color     # disable ANSI colors
-
-```
-
-
-
-Example JSON output:
-
-
-
-```json
-
-{
-
-&#x20; "publicIp": "203.0.113.42",
-
-&#x20; "internal": \[
-
-&#x20;   { "interfaceName": "Ethernet", "address": "192.168.1.23", "family": "IPv4" },
-
-&#x20;   { "interfaceName": "Wi-Fi", "address": "192.168.1.24", "family": "IPv4" }
-
-&#x20; ]
-
-}
-
-```
-
-
-
-\## Build from source
-
-
-
-```bash
-
 git clone https://github.com/<your-username>/myip-cli.git
-
 cd myip-cli
+```
 
+Run locally:
+
+```bash
+dotnet run
+```
+
+Run with arguments:
+
+```bash
 dotnet run -- --json
-
 ```
 
-
-
-\## Publish your own build
-
-
+Run tests:
 
 ```bash
+dotnet test
+```
 
+---
+
+## Package locally
+
+Create a NuGet package:
+
+```bash
 dotnet pack -c Release
+```
 
+Install the tool locally from the generated package:
+
+```bash
 dotnet tool install --global --add-source ./nupkg myip-cli
-
 ```
 
+---
 
-
-To ship it to the world via NuGet.org:
-
-
+## Publish to NuGet
 
 ```bash
-
 dotnet pack -c Release
-
-dotnet nuget push ./nupkg/myip-cli.1.0.0.nupkg \\
-
-&#x20; --api-key YOUR\_NUGET\_API\_KEY \\
-
-&#x20; --source https://api.nuget.org/v3/index.json
-
 ```
 
+```bash
+dotnet nuget push ./nupkg/myip-cli.1.0.0.nupkg \
+  --api-key YOUR_NUGET_API_KEY \
+  --source https://api.nuget.org/v3/index.json
+```
 
+After publishing, users can install it with:
 
-Anyone can then run `dotnet tool install --global myip-cli` — no server hosting required.
+```bash
+dotnet tool install --global myip-cli
+```
 
+> [!WARNING]
+> Never commit your NuGet API key to source control.
 
+---
 
-\## How it works
+## Roadmap ideas
 
+* `--public-only`
+* `--local-only`
+* `--ipv4`
+* `--ipv6`
+* `--copy`
+* Provider timeout configuration
+* Custom public IP provider support
 
+---
 
-| Info | Source |
+## Contributing
 
-|---|---|
+Pull requests are welcome.
 
-| Public IP | `api.ipify.org`, falling back to `ifconfig.me` and `icanhazip.com` |
+For small fixes, feel free to open a PR directly.
+For larger changes, please open an issue first so the approach can be discussed.
 
-| Internal IPs | `NetworkInterface.GetAllNetworkInterfaces()`, filtered to active, non-loopback, non-tunnel interfaces |
+```bash
+git checkout -b feature/my-change
+dotnet test
+```
 
+---
 
+## License
 
-No native or platform-specific code — identical behavior on Windows, macOS, and Linux.
+Released under the [MIT License](LICENSE).
 
+---
 
+<div align="center">
 
-\## License
+Built with .NET, coffee, and `System.Net.NetworkInformation`.
 
-
-
-MIT — do whatever you want with it.
-
-
-
+</div>
