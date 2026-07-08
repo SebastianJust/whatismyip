@@ -8,8 +8,6 @@
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet\&logoColor=white)](https://dotnet.microsoft.com/download)
 [![NuGet](https://img.shields.io/nuget/v/myip-cli?logo=nuget\&color=blue)](https://www.nuget.org/packages/myip-cli)
-[![Downloads](https://img.shields.io/nuget/dt/myip-cli?logo=nuget\&color=blue)](https://www.nuget.org/packages/myip-cli)
-[![Build](https://img.shields.io/github/actions/workflow/status/<your-username>/myip-cli/ci.yml?branch=main\&logo=github)](https://github.com/<your-username>/myip-cli/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-informational)](#)
 
