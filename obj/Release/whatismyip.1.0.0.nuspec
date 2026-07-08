@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>whatismyip</id>
+    <version>1.0.0</version>
+    <authors>Sebastian Just Mikkelsen</authors>
+    <description>Cross-platform CLI tool that prints your public and internal (LAN) IP addresses.</description>
+    <tags>cli ip network tool</tags>
+    <packageTypes>
+      <packageType name="DotnetTool" />
+    </packageTypes>
+    <repository type="git" commit="f7d4661c4a43daeb65d07a5272e32588822d2c22" />
+  </metadata>
+  <files>
+    <file src="D:\Git_Personal\whatismyip\obj\Release\net8.0\DotnetToolSettings.xml" target="tools\net8.0\any\DotnetToolSettings.xml" />
+    <file src="D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.deps.json" target="tools\net8.0\any\WhatIsMyIp.deps.json" />
+    <file src="D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.dll" target="tools\net8.0\any\WhatIsMyIp.dll" />
+    <file src="D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.pdb" target="tools\net8.0\any\WhatIsMyIp.pdb" />
+    <file src="D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.runtimeconfig.json" target="tools\net8.0\any\WhatIsMyIp.runtimeconfig.json" />
+  </files>
+</package>

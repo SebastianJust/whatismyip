@@ -1,0 +1,15 @@
+D:\Git_Personal\whatismyip\bin\Release\net8.0\WhatIsMyIp.exe
+D:\Git_Personal\whatismyip\bin\Release\net8.0\WhatIsMyIp.deps.json
+D:\Git_Personal\whatismyip\bin\Release\net8.0\WhatIsMyIp.runtimeconfig.json
+D:\Git_Personal\whatismyip\bin\Release\net8.0\WhatIsMyIp.dll
+D:\Git_Personal\whatismyip\bin\Release\net8.0\WhatIsMyIp.pdb
+D:\Git_Personal\whatismyip\obj\Release\net8.0\WhatIsMyIp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git_Personal\whatismyip\obj\Release\net8.0\WhatIsMyIp.AssemblyInfoInputs.cache
+D:\Git_Personal\whatismyip\obj\Release\net8.0\WhatIsMyIp.AssemblyInfo.cs
+D:\Git_Personal\whatismyip\obj\Release\net8.0\WhatIsMyIp.csproj.CoreCompileInputs.cache
+D:\Git_Personal\whatismyip\obj\Release\net8.0\WhatIsMyIp.sourcelink.json
+D:\Git_Personal\whatismyip\obj\Release\net8.0\WhatIsMyIp.dll
+D:\Git_Personal\whatismyip\obj\Release\net8.0\refint\WhatIsMyIp.dll
+D:\Git_Personal\whatismyip\obj\Release\net8.0\WhatIsMyIp.pdb
+D:\Git_Personal\whatismyip\obj\Release\net8.0\WhatIsMyIp.genruntimeconfig.cache
+D:\Git_Personal\whatismyip\obj\Release\net8.0\ref\WhatIsMyIp.dll

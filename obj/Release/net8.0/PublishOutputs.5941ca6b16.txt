@@ -1,0 +1,5 @@
+D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.exe
+D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.dll
+D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.deps.json
+D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.runtimeconfig.json
+D:\Git_Personal\whatismyip\bin\Release\net8.0\publish\WhatIsMyIp.pdb
